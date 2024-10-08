@@ -2,6 +2,35 @@
 <html lang="id" data-bs-theme="dark">
 
 <head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const countdownElement = document.getElementById('count-down');
+            const targetDate = new Date(countdownElement.getAttribute('data-time')).getTime();
+    
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+    
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                document.getElementById('day').innerText = days;
+                document.getElementById('hour').innerText = hours;
+                document.getElementById('minute').innerText = minutes;
+                document.getElementById('second').innerText = seconds;
+    
+                if (distance < 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = "Event has started!";
+                }
+            }
+    
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        });
+    </script>
     <!-- Common Tag -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -123,7 +152,7 @@
                 </div>
 
                 <h2 class="font-esthetic my-4" style="font-size: 2.5rem;">Huda &amp; Rini</h2>
-                <p class="mb-0" style="font-size: 1.25rem;">Jumat, 18 Oktober 2024</p>
+                <p class="mb-0" style="font-size: 1.25rem;">Sabtu, 19 Oktober 2024</p>
 
                 <a class="btn btn-outline-light btn-sm shadow rounded-pill px-3 my-2" target="_blank" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pernikahan%20Huda%20dan%20Rini&dates=20241017T070000/20241017T180000&details=Pernikahan%20Huda%20dan%20Rini&location=https://maps.app.goo.gl/k2iVy9gcBmFJkC9z7">
                     <i class="fa-solid fa-calendar-check me-2"></i>Save The Date
@@ -269,7 +298,7 @@
 
                     <div class="border rounded-pill shadow py-2 px-4 mx-2 mb-4">
                         <!-- Ganti waktunya pada data-waktu (sesuai format tersebut) -->
-                        <div class="row justify-content-center" data-time="2024-10-18 07:00:00" id="count-down">
+                        <div class="row justify-content-center" data-time="2024-10-18T07:00:00" id="count-down">
                             <div class="col-3 p-1">
                                 <h2 class="d-inline m-0 p-0" id="day">0</h2><small class="ms-1 me-0 my-0 p-0 d-inline">Hari</small>
                             </div>
@@ -299,7 +328,7 @@
                     <div class="overflow-x-hidden">
                         <div class="py-2" data-aos="fade-right" data-aos-duration="1500">
                             <h2 class="font-esthetic" style="font-size: 2rem;">Akad</h2>
-                            <p style="font-size: 0.95rem;">Pukul 07.00 WIB - Selesai</p>
+                            <p style="font-size: 0.95rem;">18 Oktober 2024 Pukul 07.00 WIB - Selesai</p>
                         </div>
 
                     <div class="py-2" data-aos="fade-up" data-aos-duration="1500">
@@ -309,7 +338,7 @@
 
                         <div class="py-2" data-aos="fade-left" data-aos-duration="1500">
                             <h2 class="font-esthetic" style="font-size: 2rem;">Resepsi</h2>
-                            <p style="font-size: 0.95rem;">Pukul 13.00 WIB - Selesai</p>
+                            <p style="font-size: 0.95rem;">19 Oktober 2024 Pukul 13.00 WIB - Selesai</p>
                         </div>
                     </div>
 
@@ -530,7 +559,7 @@
                     <div class="row align-items-center justify-content-between flex-column flex-sm-row pb-3">
                         <div class="col-auto">
                             <small class="text-light">
-                                Build by<i class="fa-solid fa-heart mx-1"></i>Huda and Rini
+                                Made with<i class="fa-solid fa-heart mx-1"></i>Huda and Rini
                             </small>
                         </div>
                         <div class="col-auto">
@@ -612,5 +641,4 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.js" integrity="sha256-mvTaORw+RTgKnX6ZHT4P5Sc9DNP2TBpSGII7F3sT8iE=" crossorigin="anonymous"></script>
     <script src="./js/app.js" type="module"></script>
 </body>
-
 </html>
